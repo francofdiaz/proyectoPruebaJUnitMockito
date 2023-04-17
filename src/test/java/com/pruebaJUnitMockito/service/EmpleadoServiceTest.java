@@ -108,14 +108,14 @@ public class EmpleadoServiceTest {
                 .apellidos("Stark")
                 .email("tony@gmail.com")
                 .build();
-        /*Empleado empleado2 = Empleado.builder()
+        Empleado empleado2 = Empleado.builder()
                 .id(3L)
                 .nombres("Marcos")
                 .apellidos("Aurelio")
                 .email("marcosaurelio@gmail.com")
-                .build();*/
+                .build();
 
-        given(empleadoRepository.findAll()).willReturn(java.util.List.of(empleado,empleado1/*,empleado2*/));
+        given(empleadoRepository.findAll()).willReturn(java.util.List.of(empleado,empleado1,empleado2));
 
         // when -  la accion o el comportamiento que vamos a testear
         java.util.List<Empleado> listaDeEmpleados = empleadoServiceImpl.buscarEmpleados();
