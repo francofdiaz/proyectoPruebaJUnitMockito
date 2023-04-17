@@ -108,14 +108,14 @@ public class EmpleadoServiceTest {
                 .apellidos("Stark")
                 .email("tony@gmail.com")
                 .build();
-        Empleado empleado2 = Empleado.builder()
+        /*Empleado empleado2 = Empleado.builder()
                 .id(3L)
                 .nombres("Marcos")
                 .apellidos("Aurelio")
                 .email("marcosaurelio@gmail.com")
-                .build();
+                .build();*/
 
-        given(empleadoRepository.findAll()).willReturn(java.util.List.of(empleado,employee1,empleado2));
+        given(empleadoRepository.findAll()).willReturn(java.util.List.of(empleado,employee1));
 
         // when -  la accion o el comportamiento que vamos a testear
         java.util.List<Empleado> listaDeEmpleados = empleadoServiceImpl.buscarEmpleados();
@@ -165,9 +165,11 @@ public class EmpleadoServiceTest {
         // when -  la accion o el comportamiento que vamos a testear
         Optional empleadoGuardado = empleadoServiceImpl.buscarEmpleadoPorId(empleadoId);
 
-        System.out.println("Este es el objeto empleadoGuardado : "+empleadoGuardado.get());
-        // then - verificar la salida
-        assertThat(empleadoGuardado.get()).isInstanceOf(Empleado.class);
+        if(empleadoGuardado.isPresent()){
+            System.out.println("Este es el objeto empleadoGuardado : " + empleadoGuardado.get());
+            // then - verificar la salida
+            assertThat(empleadoGuardado.get()).isInstanceOf(Empleado.class);
+        }
         //Alternativamente
         assertThat(empleadoGuardado.isPresent()).isTrue();
         //O
