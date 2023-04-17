@@ -102,20 +102,20 @@ public class EmpleadoServiceTest {
     public void dadaUnaListaDeEmpleados_cuandoSeObtienenTodosLosEmpleados_seDevuelveLaListaDeEmpleados(){
     //public void givenEmployeesList_whenGetAllEmployees_thenReturnEmployeesList(){
         // given - precondicion o configuracion
-        Empleado employee1 = Empleado.builder()
+        Empleado empleado1 = Empleado.builder()
                 .id(2L)
                 .nombres("Tony")
                 .apellidos("Stark")
                 .email("tony@gmail.com")
                 .build();
-        /*Empleado empleado2 = Empleado.builder()
+        Empleado empleado2 = Empleado.builder()
                 .id(3L)
                 .nombres("Marcos")
                 .apellidos("Aurelio")
                 .email("marcosaurelio@gmail.com")
-                .build();*/
+                .build();
 
-        given(empleadoRepository.findAll()).willReturn(java.util.List.of(empleado,employee1));
+        given(empleadoRepository.findAll()).willReturn(java.util.List.of(empleado,empleado1,empleado2));
 
         // when -  la accion o el comportamiento que vamos a testear
         java.util.List<Empleado> listaDeEmpleados = empleadoServiceImpl.buscarEmpleados();
